@@ -1,10 +1,10 @@
-This folder contains all code extracting shared heredity from psychometric traits.
+This folder contains all code extracting shared heredity from six chronic pain traits.
 
 ## 00a_start.sh
 This script sources 00b_pipeline_for_matrix_calculation.sh script and sets the command line variables for further calculations (only original traits are mentioned). 
 
 ## 00b_pipeline_for_matrix_calculation.sh
-This script incorporates a pipeline for calculation of correlation and covariance matrices for original traits and estimation of alpha coeffitients for linear combination (see steps 01 - 05). The script uses command line variables.
+This script incorporates a pipeline for calculation of correlation and covariance matrices for original traits and estimation of alpha coeffitients for linear combination (see steps 01 - 06). The script uses command line variables.
 
 ## 01_pheno_corr.sh
 This script calculates phenotypic correlations between traits. The script is writted for GWAS-Map database and it uses command line variables.
