@@ -1,7 +1,7 @@
 # Aim of this script is to estimate alpha coefficients in linear combination
 # for each trait
 
-source("../00_core_functions/shared_heredity.R")
+source("../../shared_heredity/00_core_functions/shared_heredity.R")
 
 path <- commandArgs(trailingOnly = T)[1] # get command line argument from 00a_start.sh
 
