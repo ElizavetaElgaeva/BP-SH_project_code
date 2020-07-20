@@ -1,19 +1,22 @@
-# Aim of this script is to obtain GWAS summary statistics for shared heredity
+# Aim of this script is to obtain GWAS summary statistics for shared heredity in Discovery cohort
 
 library(data.table)
 library(dplyr)
-source("../00_core_functions/linear_combination_v3.R") 
+source("../../shared_heredity/00_core_functions/linear_combination_v3.R") 
 
-path_to_result_directory <- '/mnt/polyomica/projects/shared_heredity/data/02_Lipids/three_traits/SH/00_raw_data/'
+path_to_result_directory <- '../../../data/01_sh/sh_discovery/00_raw_data/'
 
-gwas_files <- c('/mnt/polyomica/projects/shared_heredity/data/02_Lipids/original_traits/02_unification_out/ID_1287001/ID_1287001_done.csv',
-		'/mnt/polyomica/projects/shared_heredity/data/02_Lipids/original_traits/02_unification_out/ID_1287003/ID_1287003_done.csv',
-		'/mnt/polyomica/projects/shared_heredity/data/02_Lipids/original_traits/02_unification_out/ID_1287004/ID_1287004_done.csv')
+gwas_files <- c('/mnt/polyomica/projects/mv_gwas/data/chronic_discovery/unification_results/Hip/Hip_output_done.csv',
+		'/mnt/polyomica/projects/mv_gwas/data/chronic_discovery/unification_results/Back/Back_output_done.csv',
+		'/mnt/polyomica/projects/mv_gwas/data/chronic_discovery/unification_results/Neck/Neck_output_done.csv',
+		'/mnt/polyomica/projects/mv_gwas/data/chronic_discovery/unification_results/Knee/Knee_output_done.csv',
+		'/mnt/polyomica/projects/mv_gwas/data/chronic_discovery/unification_results/Head/Head_output_done.csv',
+		'/mnt/polyomica/projects/mv_gwas/data/chronic_discovery/unification_results/Stom/Stom_output_done.csv')
 
 gwas <- lapply(gwas_files, fread)
 
-aa <- read.table('/mnt/polyomica/projects/shared_heredity/data/02_Lipids/three_traits/alphas.txt', row.names = 1)
-covm <- read.table('/mnt/polyomica/projects/shared_heredity/data/02_Lipids/three_traits/pheno_corr_matrix.txt', row.names = 1, check.names = F)
+aa <- read.table('../../../data/01_sh/alphas.txt', row.names = 1)
+covm <- read.table('../../../data/01_sh/pheno_corr_matrix.txt', row.names = 1, check.names = F)
 
 rs_id <- lapply(gwas, function(x) x$rs_id)
 snps <- Reduce(intersect, rs_id)
@@ -35,5 +38,5 @@ head(sh_gwas, n = 2)
 dir.create(path_to_result_directory)
 data.table::fwrite(
 	sh_gwas, 
-	file = paste0(path_to_result_directory, 'SH_Lipids_GWAS.txt'),
+	file = paste0(path_to_result_directory, 'SH_disc_GWAS.txt'),
 	sep = '\t')
