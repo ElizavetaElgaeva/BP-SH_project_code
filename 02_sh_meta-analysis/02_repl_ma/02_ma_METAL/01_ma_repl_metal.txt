@@ -1,0 +1,29 @@
+SCHEME STDERR
+AVERAGEFREQ ON
+GENOMICCONTROL ON
+
+MARKER rs_id
+ALLELE ea ra
+EFFECT beta
+PVALUE p
+WEIGHT n
+SEPARATOR COMMA
+STDERR se
+FREQ eaf 
+
+CUSTOMVARIABLE n_total 
+LABEL n_total AS n
+
+PROCESS /mnt/polyomica/projects/bp-sh/data/00_upload_to_db/01_replication/AA/01_sh/unification_results/SH_aa_repl_output_done.csv
+
+PROCESS /mnt/polyomica/projects/bp-sh/data/00_upload_to_db/01_replication/EA/01_sh/unification_results/SH_ea_repl_output_done.csv
+
+PROCESS /mnt/polyomica/projects/bp-sh/data/00_upload_to_db/01_replication/SA/01_sh/unification_results/SH_sa_repl_output_done.csv
+
+OUTFILE /mnt/polyomica/projects/bp-sh/data/02_sh_ma/02_repl_ma/02_ma_METAL/SH_ma_repl_metal.txt
+
+ANALYZE HETEROGENEITY
+
+QUIT
+
+
