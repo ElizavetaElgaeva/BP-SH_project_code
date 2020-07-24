@@ -4,10 +4,10 @@
 
 # Estimate heritability for BP-SH
 run_ldscore --h2 --gwas-id=41
-#  ## 
+# 0.0141 ## se 0.002 
 
 # Estimate genetic correlation for SH and BP-SH
 run_ldscore --rg --gwas-id=19,41
-##  (se )
+## -0.0031 (se 0.051)
 
 # compare with the results of 01a script
