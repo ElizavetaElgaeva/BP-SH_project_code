@@ -21,6 +21,9 @@ This script calculates genetic correlations, covariances and se of genetic covar
 ## 05_alpha_coefficients.R
 This script calculates alpha coeffitients and weights for each trait in linear combination using data from Discovery study. The script uses command line variables.
 
+## 05a_alpha_coefficients_five_traits.R
+This script calculates alpha coeffitients in linear combination of five pain traits (Head pain was excluded) and estimates the expected genetic correlation between the shared heredity for five and six pain traits. The idea of these manipulations was to check for the possible bias due to Head pain inclusion in the analysis.  
+
 ## 06_alpha_CI_estimation.R
 This script estimates confident intervals for alpha coeffitients.
 
