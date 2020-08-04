@@ -2,6 +2,6 @@
 
 out="/mnt/polyomica/projects/bp-sh/data/02_sh_ma/02_repl_ma/01_ma_via_db/"
 
-run_meta_analysis --gwas-ids 26,33,40 --genomic-control ON --output-folder "$out" --output-filename SH_MA_REPL.csv
+run_meta_analysis --gwas-ids 26,33,40 --output-folder "$out" --output-filename SH_MA_REPL.csv
 
 
