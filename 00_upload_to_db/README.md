@@ -18,7 +18,7 @@ This folder contains scripts for unification and uploading of GWAS summary stati
 ## 05_bp-sh_ma_eur
 This folder contains scripts for unification and uploading of GWAS summary statistics of back pain without shared herdity meta-analysis of Europeans to the GWAS-MAP database.
 
-## 06_bp-sh_ma_rerl
+## 06_bp-sh_ma_repl
 This folder contains scripts for unification and uploading of GWAS summary statistics of  back pain without shared herdity meta-analysis of Replication cohorts to the GWAS-MAP database.
 
 
