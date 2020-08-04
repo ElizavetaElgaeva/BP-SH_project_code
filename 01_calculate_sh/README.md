@@ -39,6 +39,9 @@ This script estimates heritability of shared heredity and its genetic correlatio
 ## vim 07c_validity_check_sh_gip1_rg.R
 This script estimates expected genetic correlation between shared heredity of six pain traits from this study and GIP1 of four musculosceletal pain traits from our prevoius study (https://doi.org/10.1038/s42003-020-1051-9).
 
+## vim 07d_validity_check_sh_gip1_rg.sh
+This script estimates expected genetic correlation between European meta-analysis of shared heredity of six pain traits from this study and European meta-analysis of GIP1 of four musculosceletal pain traits from our prevoius study (https://doi.org/10.1038/s42003-020-1051-9) using LD Score regression implemented in GWAS-Map database.
+
 ## 08_linear_combination_sh_aa_repl.R
 This script calculates summary statistics for shared heredity in AA Replication study (replication cohort of African ancestry).
 
