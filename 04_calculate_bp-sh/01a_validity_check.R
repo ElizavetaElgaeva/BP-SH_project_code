@@ -1,5 +1,6 @@
 # Aim of this script is to estimate heritability of Back pain after
 # shared heredity subtraction and its genetic correlation with shared heredity
+# and back pain
 
 library(data.table)
 
@@ -53,5 +54,20 @@ tmp2 <- lapply(n_traits, function(x) cor_gi_a1_a2(a1 = alphas, a2 = position[x, 
 #[1] 1.99153e-15 rg for sh and head pain-sh
 #[[6]]
 #[1] 2.932129e-15 rg for sh and stomach pain-sh
+
+# Estimate pairwise genetic correlations for traits-SH and original pain traits
+tmp3 <- lapply(n_traits, function(x) cor_gi_a1_a2(a1 = position[x, ], a2 = position[x, ] - alphas*slope[x], covm = gcov))
+#[[1]]
+#[1] 0.473316 rg for hip pain-sh and hip pain
+#[[2]]
+#[1] 0.4311382 rg for back pain and back pain-sh
+#[[3]]
+#[1] 0.3445892 rg for necl pain and neck pain-sh
+#[[4]]
+#[1] 0.6226841 rg for knee pain and knee pain-sh
+#[[5]]
+#[1] 0.8440907 rg for head pain and head pain-sh
+#[[6]]
+#[1] 0.5726778 rg for stomach pain and stomach pain-sh
 
 

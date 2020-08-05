@@ -1,6 +1,6 @@
 # Aim of this script is to estimate heritability of
 # European meta-analysis of Back pain without shared heredity
-# and its genetic correlations with Shared heredity and Back pain without
+# and its genetic correlations with Shared heredity, Back pain and Back pain without
 # Shared heredity traits from different datasets
 # using LD Score implementd in GWAS-Map (from test container)
 
@@ -21,4 +21,7 @@ run_ldscore --rg --gwas-id=49,19 # bp-sh ma eur and sh discovery
 ## 0.0324 se=0.045
 run_ldscore --rg --gwas-id=49,26 # bp-sh ma eur and sh eur replication
 ## -0.0231 se=0.044
-
+run_ldscore --rg --gwas-id=49,14 # bp-sh ma eur and bp discovery
+## 0.4562 se=0.042
+run_ldscore --rg --gwas-id=49,21 # bp-sh ma eur and bp eur replication
+## 0.3344  se=0.052
