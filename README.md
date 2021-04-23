@@ -18,5 +18,11 @@ This folder contains scripts for calculation of back pain minus shared heredity 
 ## 05_bp-sh_meta-analysis
 This folder contains scripts for running meta-analysis of back pain minus shared heredity trait.
 
-## 06_bp-sh_ma_func_an
+## 06_clumping
+This folder contains scripts for clumping procedure.
+
+## 07_cojo
+This folder contains scripts for running COJO.
+
+## 08_bp-sh_ma_func_an
 This folder contains scripts for _in silico_ functional analysis of back pain minus shared heredity trait. 

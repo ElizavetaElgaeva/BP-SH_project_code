@@ -1,0 +1,10 @@
+R
+library(data.table)
+source("clumping.R")
+dt <- fread("SH_disc_GWAS.txt")
+dt <- data.frame(dt)
+res <- function_for_shlop_29_03_2020(dt, p_value = "p", pos = "pos", snp = "SNP", thr = 2.5e-8)
+file.create("clumping_result.txt")
+fwrite(res, "clumping_result.txt", sep = "\t")
+q()
+
