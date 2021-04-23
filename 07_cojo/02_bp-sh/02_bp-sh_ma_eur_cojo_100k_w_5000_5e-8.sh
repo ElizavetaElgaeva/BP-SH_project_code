@@ -1,7 +1,7 @@
 #!/bin/bash
-# Aim of this script is to run COJO on SH MA Eur data with p = 5e-08 threshold
+# Aim of this script is to run COJO on BP-SH MA Eur data with p = 5e-08 threshold
 
-path='/storage/projects/PainOmics/bp-sh/data/cojo/01_sh/'
+path='/storage/projects/PainOmics/bp-sh/data/cojo/02_bp-sh/'
 
 for i in {1..22}
 do
@@ -12,6 +12,6 @@ do
    --cojo-p 5e-8 \
    --chr $i \
    --cojo-wind 5000 \
-   --cojo-file ${path}/input/SH_ma_eur_output_done.for_cojo \
-   --out ${path}/output/5e-8/sh_ma_eur_chr"$i"_5e-8.cojo
+   --cojo-file ${path}/input/BP-SH_ma_eur_output_done.for_cojo \
+   --out ${path}/output/5e-8/bp-sh_ma_eur_chr"$i"_5e-8.cojo
 done
