@@ -25,4 +25,11 @@ This folder contains scripts for clumping procedure.
 This folder contains scripts for running COJO.
 
 ## 08_bp-sh_ma_func_an
-This folder contains scripts for _in silico_ functional analysis of back pain minus shared heredity trait. 
+This folder contains scripts for _in silico_ functional analysis of back pain minus shared heredity trait.
+
+## 09_heatmaps
+This folder contains scripts generating genetic and phenotypic correlations and visualizing them via heatmaps.
+
+## 10_tables
+This folder contains scripts generating replictaion tables.
+ 
