@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### The aim of this script is to run DEPICT for meta-analysis cohort for SH COJO results with p-value treshold 2.5e-08
+### The aim of this script is to run DEPICT with European meta-analysis for SH COJO results with p-value treshold 2.5e-08
 
 ### Config file parameters:
 
