@@ -12,4 +12,5 @@
 
 #association_pvalue_cutoff:  1
 
-/home/common/projects/depict_software/DEPICT_v194/src/python/depict.py /mnt/polyomica/projects/bp-sh/data/08_bp-sh_ma_func_an/depict/2.5e-8/bp-sh_ma_eur_all_chr.cfg
+/home/common/projects/depict_software/DEPICT_v194/src/python/depict.py /mnt/polyomica/projects/bp-sh/src/verzun_src/08_bp-sh_ma_func_an/DEPICT/2.5e-8_bp-sh_ma_eur_all_chr.cfg
+
