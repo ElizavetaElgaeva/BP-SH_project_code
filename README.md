@@ -32,4 +32,7 @@ This folder contains scripts generating genetic and phenotypic correlations and 
 
 ## 10_tables
 This folder contains scripts generating replictaion tables.
+
+## 11_association_plots
+This folder contains code preparing data for association plot visualization.
  
