@@ -1,0 +1,8 @@
+#instruction to extract rg info
+
+# to run this script go to the project directory in gwas-master upload container and type 'prod_psql_connect' into console, then copy the following into console:   
+
+\copy (SELECT * FROM gwas.ldsc_rg, gwas.descriptors WHERE descriptors.gwas_id=ldsc_rg.gwas_id_2 AND gwas_id_1 = 2269986 order by gwas_id_2) To '~/polyomica/projects/bp-sh/data/03_sh_ma_func_an/gene_corrs/DESCRIPTORS_rg_EUR_MA.csv' With CSV DELIMITER ','  HEADER;
+
+\copy (SELECT * FROM gwas.ldsc_rg, gwas.descriptors WHERE descriptors.gwas_id=ldsc_rg.gwas_id_2 AND gwas_id_1 = 2269987 order by gwas_id_2) To '~/polyomica/projects/bp-sh/data/03_sh_ma_func_an/gene_corrs/DESCRIPTORS_rg_EUR_MA-SH.csv' With CSV DELIMITER ','  HEADER;
+
