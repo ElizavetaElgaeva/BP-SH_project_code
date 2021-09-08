@@ -1,5 +1,5 @@
-traits_of_interest='2269986'
-gwas_id=$(cat ../../../../data/03_sh_ma_func_an/gene_corrs/20200911_list_of_gwas_ids_for_rg.txt)
+traits_of_interest='2269987'
+gwas_id=$(cat ../../../../data/08_bp-sh_ma_func_an/gene_corrs/20200911_list_of_gwas_ids_for_rg.txt)
 for trait in $traits_of_interest
 do
 	echo Calculations started for trait id $trait
