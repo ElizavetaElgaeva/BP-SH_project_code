@@ -7,3 +7,6 @@ This script to extract correlations from GWAS-MAP to file.
 ## 03_select_ids_for_squared_rg_matrix.R
 This script selects GWAS ids from GWAS-MAP database to create a squared matriz of genetic correlations.
 
+## 04_
+this script counts upper-corner diagonal of gene corr matrix using ldscore
+to run this script it is necessary to set a filename with gwas_ids (should be listed in column) as the command line argument
