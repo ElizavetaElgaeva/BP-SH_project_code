@@ -58,6 +58,7 @@ n <- nrow(opcs_f)
 prev <- lapply(prev, function(x) x/n*100)
 ind_prev <- which(prev > 0.5 & prev < 99.5)
 opcs_f_prev <- opcs_f[, c(1, ind_prev + 1)]
+prev_opcs_f <- prev[ind_prev]
 
 # Save data
 opcs_f <- opcs_f[, -c(8003:8023)]
@@ -67,4 +68,5 @@ save(opcs_f, readme_opcs_f, file = "./opcs_iid_cbp_filtered.RData")
 readme_opcs_f_prev <- "OPCS table with only IIDs presented in bp_prs_iid_icd10_filtered.RData and OPCS codes for binary traits with prevalence > 0.5% and < 99.5%"
 save(opcs_f_prev, readme_opcs_f_prev, file = "./opcs_iid_cbp_prev_filtered.RData")
 
-
+readme_prev_opcs_f <- "Prevalence of OPCS codes from opcs_iid_cbp_prev_filtered.RData (prevalence > 0.5% and < 99.5%)"
+save(prev_opcs_f, readme_prev_opcs_f, file = "./prev_opcs_filtered.RData")

@@ -70,6 +70,7 @@ n <- nrow(icd_f)
 prev <- lapply(prev, function(x) x/n*100)
 ind_prev <- which(prev > 0.5 & prev < 99.5)
 icd_f_prev <- icd_f[, c(1, ind_prev + 1)]
+prev_icd_f <- prev[ind_prev]
 
 # Save data
 icd_f <- icd_f[, -c(11471:11491)]
@@ -82,4 +83,6 @@ save(bp_f, readme_bp_f, file = "./bp_prs_iid_icd10_filtered.RData")
 readme_icd_f_prev <- "ICD10 table with only IIDs presented in cbp_pheno_prs_merged.txt and ICD10 codes for binary traits with prevalence > 0.5% and < 99.5%"
 save(icd_f_prev, readme_icd_f_prev, file = "./icd10_iid_cbp_prev_filtered.RData")
 
+readme_prev_icd_f <- "Prevalence of ICD10 codes from icd10_iid_cbp_prev_filtered.RData (prevalence > 0.5% and < 99.5%)" 
+save(prev_icd_f, readme_prev_icd_f, file = "./prev_of_icd10_filtered.RData")
 
