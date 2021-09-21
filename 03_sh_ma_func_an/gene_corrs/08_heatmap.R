@@ -2,7 +2,7 @@
 # obtained at previous step
 
 library(data.table)
-library(corrplot)
+library(gplots)
 
 setwd("/mnt/polyomica/projects/bp-sh/data/03_sh_ma_func_an/gene_corrs")
 
@@ -118,8 +118,17 @@ clusters <- c("Pain-related traits and surgery", "Thrombosis", "Injuries", "Resp
 
 rownames(rg_m_cut) <- rownames(rg_p_cut) <- clusters
 
+thr <- 0.05 / (((324*324)-324)/2 + (730 - 322)*2)
+
+rg_m_p <- round(rg_m_cut, digits = 2)
+notsig <- which(rg_p_cut > thr)
+rg_m_p[notsig] <- NA
+
 pdf("heatmap_clust_1.8.pdf", width = 30, height = 30)
-corrplot(rg_m_cut, method = "square", tl.col = "black", p.mat = rg_p_cut, sig.level = 0.05, addCoef.col = "black", cl.cex=1)
+heatmap.2(rg_m_cut, cellnote = rg_m_p, notecex = 4.0, notecol = "black", na.color = "grey",
+	  col = redblue(75), margins = c(25, 80), density.info = "none", trace = "none",
+          cexRow = 4.0, srtCol = 45, cexCol = 4.0,
+	  lhei = c(1, 8), lwid = c(1.2, 4), Colv = FALSE, dendrogram = "row")
 dev.off()
 
 save(traits, clusters, rg_m_cut, rg_p_cut, file = "heatmap_clusters_1.8.RData")
