@@ -77,8 +77,10 @@ traits <- c(traits, names(h2)[i5]) # add trait from the 5th cluster
 c6 <- which(h2 == 6)
 min(rg_p_cut[c6, ])
 which(rg_p_cut == min(rg_p_cut[c6, ]))
-i6 <- which(rg_p_cut[, 2] == min(rg_p_cut[c6, 2]))
-traits <- c(traits, names(h2)[i6]) # add trait from the 6th cluster
+which(rg_p_cut[c6, 1] == min(rg_p_cut[c6, 1]))
+i6 <- which(rg_p_cut[c6, 1] == min(rg_p_cut[c6, 1]))
+min(rg_p_cut[c6, 2][i6])
+traits <- c(traits, names(which(rg_p_cut[c6, 2][i6] == min(rg_p_cut[c6, 2][i6])))) # add trait from the 6th cluster
 
 c7 <- which(h2 == 7)
 min(rg_p_cut[c7, ])
@@ -107,8 +109,10 @@ traits <- c(traits, names(h2)[i10]) # add trait from the 10th cluster
 c11 <- which(h2 == 11)
 min(rg_p_cut[c11, ])
 which(rg_p_cut == min(rg_p_cut[c11, ]))
-i11 <- which(rg_p_cut[, 2] == min(rg_p_cut[c11, 2]))
-traits <- c(traits, names(h2)[i11]) # add trait from the 11th cluster
+which(rg_p_cut[c11, 1] == min(rg_p_cut[c11, 1]))
+i11 <- which(rg_p_cut[c11, 1] == min(rg_p_cut[c11, 1]))
+min(rg_p_cut[c11, 2][i11])
+traits <- c(traits, names(which(rg_p_cut[c11, 2][i11] == min(rg_p_cut[c11, 2][i11]))))
 
 h2[traits] # self-check, each cluster is represented
 rg_m_cut <- rg_m_cut[traits, ]
