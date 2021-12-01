@@ -1,0 +1,33 @@
+?: &_cedar_base
+  base_dir: /mnt/arcmga/home/common/DataStorage/cedar/
+  file_type: hdf5
+  probe_column: probe
+
+cd14:
+  path: cd14.hd5
+  <<: *_cedar_base
+cd15:
+  path: cd15.hd5
+  <<: *_cedar_base
+cd19:
+  path: cd19.hd5
+  <<: *_cedar_base
+cd4:
+  path: cd4.hd5
+  <<: *_cedar_base
+cd8:
+  path: cd8.hd5
+  <<: *_cedar_base
+il:
+  path: il.hd5
+  <<: *_cedar_base
+pla:
+  path: pla.hd5
+  <<: *_cedar_base
+re:
+  path: re.hd5
+  <<: *_cedar_base
+tr:
+  path: tr.hd5
+  <<: *_cedar_base
+

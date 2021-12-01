@@ -1,0 +1,18 @@
+?: &_igp_base
+  base_dir: /mnt/polyomica/projects/bp-sh/data/00_upload_to_db/03_sh_ma_eur/unification_results/
+  column_map:
+    rs_id: rsid
+    ea: eff_allele
+    ra: ref_allele
+    beta: beta
+    se: sigma
+    eaf: maf
+    p: p
+    chr: chr
+    bp: bp
+
+SH:
+  path: SH_ma_eur_output_done.csv
+  <<: *_igp_base
+
+

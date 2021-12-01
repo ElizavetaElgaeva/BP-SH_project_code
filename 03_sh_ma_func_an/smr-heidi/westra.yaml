@@ -1,0 +1,6 @@
+
+westra:
+  path: /home/common/projects/glycomics/SMR-HEIDI/EUR_MA_20210826/westra.hd5
+  file_type: hdf5
+  probe_column: probe
+
