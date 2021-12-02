@@ -1,5 +1,5 @@
 #!/bin/bash
-conda deactivate
+
 path='/mnt/polyomica/projects/bp-sh/data/03_sh_ma_func_an/smr-heidi/'
 
 cat westra.yaml > ${path}/westra_PGP.yaml
