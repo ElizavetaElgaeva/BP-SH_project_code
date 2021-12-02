@@ -1,2 +1,23 @@
-##00-03
-Old version of SMR-HEIDI analysis using GWAS-MAP, during tehnical issues will be changed in the next commits by Evgeny Pahomov tool for SMR-HEIDI 
+##01_run_cedar.sh
+Script to start analysis of immune cells eQTL for CEDAR  
+
+##02_run_gtex.sh
+Script to start analysis of GTEx eQTL
+
+##03_run_westra.sh
+Script to start analysis of westra eQTL
+
+##cache
+Temp directory, appears after launching SMR-HEIDI, can be removed
+
+##cedar.yaml
+Start parameters for CEDAR
+
+##gtex_v7.yaml
+Start parameters for GTEx
+
+##start_info.yaml
+Common start parameters for SMR-HEIDI
+
+##westra.yaml
+Start parameters for westra
