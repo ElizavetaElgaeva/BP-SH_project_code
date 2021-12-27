@@ -1,0 +1,151 @@
+
+?hb: &_hdf5_base
+    base_dir: /mnt/arcmga/home/common/DataStorage/gtex_v7
+    file_type: hdf5
+    probe_column: probe
+
+Adipose Subcutaneous:
+    path: Adipose Subcutaneous.hd5
+    <<: *_hdf5_base
+Adipose Visceral Omentum:
+    path: Adipose Visceral Omentum.hd5
+    <<: *_hdf5_base
+Adrenal Gland:
+    path: Adrenal Gland.hd5
+    <<: *_hdf5_base
+Artery Aorta:
+    path: Artery Aorta.hd5
+    <<: *_hdf5_base
+Artery Coronary:
+    path: Artery Coronary.hd5
+    <<: *_hdf5_base
+Artery Tibial:
+    path: Artery Tibial.hd5
+    <<: *_hdf5_base
+Brain Amygdala:
+    path: Brain Amygdala.hd5
+    <<: *_hdf5_base
+Brain Anterior cingulate cortex BA24:
+    path: Brain Anterior cingulate cortex BA24.hd5
+    <<: *_hdf5_base
+Brain Caudate basal ganglia:
+    path: Brain Caudate basal ganglia.hd5
+    <<: *_hdf5_base
+Brain Cerebellar Hemisphere:
+    path: Brain Cerebellar Hemisphere.hd5
+    <<: *_hdf5_base
+Brain Cerebellum:
+    path: Brain Cerebellum.hd5
+    <<: *_hdf5_base
+Brain Cortex:
+    path: Brain Cortex.hd5
+    <<: *_hdf5_base
+Brain Frontal Cortex BA9:
+    path: Brain Frontal Cortex BA9.hd5
+    <<: *_hdf5_base
+Brain Hippocampus:
+    path: Brain Hippocampus.hd5
+    <<: *_hdf5_base
+Brain Hypothalamus:
+    path: Brain Hypothalamus.hd5
+    <<: *_hdf5_base
+Brain Nucleus accumbens basal ganglia:
+    path: Brain Nucleus accumbens basal ganglia.hd5
+    <<: *_hdf5_base
+Brain Putamen basal ganglia:
+    path: Brain Putamen basal ganglia.hd5
+    <<: *_hdf5_base
+Brain Spinal cord cervical c-1:
+    path: Brain Spinal cord cervical c-1.hd5
+    <<: *_hdf5_base
+Brain Substantia nigra:
+    path: Brain Substantia nigra.hd5
+    <<: *_hdf5_base
+Breast Mammary Tissue:
+    path: Breast Mammary Tissue.hd5
+    <<: *_hdf5_base
+Cells EBV-transformed lymphocytes:
+    path: Cells EBV-transformed lymphocytes.hd5
+    <<: *_hdf5_base
+Cells Transformed fibroblasts:
+    path: Cells Transformed fibroblasts.hd5
+    <<: *_hdf5_base
+Colon Sigmoid:
+    path: Colon Sigmoid.hd5
+    <<: *_hdf5_base
+Colon Transverse:
+    path: Colon Transverse.hd5
+    <<: *_hdf5_base
+Esophagus Gastroesophageal Junction:
+    path: Esophagus Gastroesophageal Junction.hd5
+    <<: *_hdf5_base
+Esophagus Mucosa:
+    path: Esophagus Mucosa.hd5
+    <<: *_hdf5_base
+Esophagus Muscularis:
+    path: Esophagus Muscularis.hd5
+    <<: *_hdf5_base
+Heart Atrial Appendage:
+    path: Heart Atrial Appendage.hd5
+    <<: *_hdf5_base
+Heart Left Ventricle:
+    path: Heart Left Ventricle.hd5
+    <<: *_hdf5_base
+Liver:
+    path: Liver.hd5
+    <<: *_hdf5_base
+Lung:
+    path: Lung.hd5
+    <<: *_hdf5_base
+Minor Salivary Gland:
+    path: Minor Salivary Gland.hd5
+    <<: *_hdf5_base
+Muscle Skeletal:
+    path: Muscle Skeletal.hd5
+    <<: *_hdf5_base
+Nerve Tibial:
+    path: Nerve Tibial.hd5
+    <<: *_hdf5_base
+Ovary:
+    path: Ovary.hd5
+    <<: *_hdf5_base
+Pancreas:
+    path: Pancreas.hd5
+    <<: *_hdf5_base
+Pituitary:
+    path: Pituitary.hd5
+    <<: *_hdf5_base
+Prostate:
+    path: Prostate.hd5
+    <<: *_hdf5_base
+Skin Not Sun Exposed Suprapubic:
+    path: Skin Not Sun Exposed Suprapubic.hd5
+    <<: *_hdf5_base
+Skin Sun Exposed Lower leg:
+    path: Skin Sun Exposed Lower leg.hd5
+    <<: *_hdf5_base
+Small Intestine Terminal Ileum:
+    path: Small Intestine Terminal Ileum.hd5
+    <<: *_hdf5_base
+Spleen:
+    path: Spleen.hd5
+    <<: *_hdf5_base
+Stomach:
+    path: Stomach.hd5
+    <<: *_hdf5_base
+Testis:
+    path: Testis.hd5
+    <<: *_hdf5_base
+Thyroid:
+    path: Thyroid.hd5
+    <<: *_hdf5_base
+Uterus:
+    path: Uterus.hd5
+    <<: *_hdf5_base
+Vagina:
+    path: Vagina.hd5
+    <<: *_hdf5_base
+Whole Blood:
+    path: Whole Blood.hd5
+    <<: *_hdf5_base
+
