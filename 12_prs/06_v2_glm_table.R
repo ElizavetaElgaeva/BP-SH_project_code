@@ -33,39 +33,38 @@ ls()
 
 # Select ICD10 and OPCS codes of interest
 codes <- names(bp_icd)
-codes <- c(codes, names(bp_opcs))
 codes <- c(codes, names(sh_icd))
-codes <- c(codes, names(sh_opcs))
 codes <- c(codes, names(bp_sh_icd))
-length(codes)
-length(unique(codes))
 codes <- unique(codes)
 
-icd_ind <- which(codes %in% names(bp_test_nonr_var1_cov))
+codes2 <- names(bp_opcs)
+codes2 <- c(codes2, names(sh_opcs))
+codes2 <- unique(codes2)
+
+intersect(codes, codes2) # null
+all_codes <- c(codes, codes2)
+icd_ind <- which(codes %in% all_codes)
 
 # Create a table
-tab <- as.data.frame(matrix(ncol = 15, nrow = length(codes)))
+tab <- as.data.frame(matrix(ncol = 15, nrow = length(all_codes)))
 colnames(tab) <- c("code", "bp_or", "bp_beta", "bp_se", "bp_p", "sh_or", "sh_beta", "sh_se", "sh_p", "bp-sh_or", "bp-sh_beta", "bp-sh_se", "bp-sh_p", "nomenclature", "code_prevalence")
-tab$code <- codes
+tab$code <- all_codes
 tab$nomenclature[icd_ind] <- "ICD10"
 tab$nomenclature[-icd_ind] <- "OPCS"
 
-bp_full <- c(bp_test_nonr_var1_cov, opcs_bp_test_nonr_var1)
-bp_full <- bp_full[codes]
+bp_full <- c(bp_test_nonr_var1_cov[codes], opcs_bp_test_nonr_var1[codes2])
 tab$"bp_or" <- sapply(bp_full, function(x) exp(x[, 1]))
 tab$"bp_beta" <- sapply(bp_full, function(x) x[, 1])
 tab$"bp_se" <- sapply(bp_full, function(x) x[, 2])
 tab$"bp_p" <- sapply(bp_full, function(x) x[, 4])
 
-sh_full <- c(sh_test_nonr_var1_cov, opcs_sh_test_nonr_var1)
-sh_full <- sh_full[codes]
+sh_full <- c(sh_test_nonr_var1_cov[codes], opcs_sh_test_nonr_var1[codes2])
 tab$"sh_or" <- sapply(sh_full, function(x) exp(x[, 1]))
 tab$"sh_beta" <- sapply(sh_full, function(x) x[, 1])
 tab$"sh_se" <- sapply(sh_full, function(x) x[, 2])
 tab$"sh_p" <- sapply(sh_full, function(x) x[, 4])
 
-bp_sh_full <- c(bp_sh_test_nonr_var1_cov, opcs_bp_sh_test_nonr_var1)
-bp_sh_full <- bp_sh_full[codes]
+bp_sh_full <- c(bp_sh_test_nonr_var1_cov[codes], opcs_bp_sh_test_nonr_var1[codes2])
 tab$"bp-sh_or" <- sapply(bp_sh_full, function(x) exp(x[, 1]))
 tab$"bp-sh_beta" <- sapply(bp_sh_full, function(x) x[, 1])
 tab$"bp-sh_se" <- sapply(bp_sh_full, function(x) x[, 2])
@@ -73,8 +72,7 @@ tab$"bp-sh_p" <- sapply(bp_sh_full, function(x) x[, 4])
 
 load("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/prev_of_icd10_filtered.RData")
 load("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/prev_opcs_filtered.RData")
-prev_full <- c(prev_icd_f, prev_opcs_f)
-prev_full <- prev_full[codes]
+prev_full <- c(prev_icd_f[codes], prev_opcs_f[codes2])
 tab$"code_prevalence" <- prev_full
 
 data.table::fwrite(tab, file = "glm_results_test_nonrel.txt", sep = "\t", dec = ".")
@@ -128,14 +126,15 @@ data.table::fwrite(tab_joint, file = "glm_results_extended_test_nonrelatives.txt
 icd_des <- readxl::read_excel("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/ICD10_coding19.xlsx", sheet = 1)
 opcs_des <- readxl::read_excel("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/OPCS_coding240.xlsx", sheet = 1)
 
-i_icd_des <- match(codes[icd_ind], icd_des$"coding")
-i_opcs_des <- match(codes[-icd_ind], opcs_des$"coding")
+i_icd_des <- match(codes, icd_des$"coding")
+i_opcs_des <- match(codes2, opcs_des$"coding")
 
 icd_des <- icd_des[i_icd_des, c("coding", "meaning")]
 opcs_des <- opcs_des[i_opcs_des, c("coding", "meaning")]
 icd_opcs_des <- rbind(icd_des, opcs_des)
-i2 <- match(tab_joint$code, icd_opcs_des$"coding") 
-
-tab_joint$description <- icd_opcs_des$meaning[i2]
-tab_joint$description[233:238] <- c("Chronic back pain", "Chronic neck pain", "Chronic hip pain", "Chronic stomach pain", "Chronic knee pain", "Chronic headache")
+i2 <- which(tab_joint$code %in% icd_opcs_des$"coding") 
+table(tab_joint$code[i2] == icd_opcs_des$"coding")
+tab_joint$description <- NA
+tab_joint$description[i2] <- icd_opcs_des$meaning
+tab_joint$description[-i2] <- c("Chronic back pain", "Chronic neck pain", "Chronic hip pain", "Chronic stomach pain", "Chronic knee pain", "Chronic headache")
 data.table::fwrite(tab_joint, file = "glm_results_extended_desc_test_nonrelatives.txt", sep = "\t", dec = ".")
