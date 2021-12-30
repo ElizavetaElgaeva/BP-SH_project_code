@@ -25,17 +25,20 @@ ls()
 
 # Select ICD10 and OPCS codes for clustering
 codes <- names(bp_icd)
-codes <- c(codes, names(bp_opcs))
 codes <- c(codes, names(sh_icd))
-codes <- c(codes, names(sh_opcs))
 codes <- c(codes, names(bp_sh_icd))
-length(codes)
-length(unique(codes))
 codes <- unique(codes)
+
+codes2 <- names(bp_opcs)
+codes2 <- c(codes2, names(sh_opcs))
+codes2 <- unique(codes2)
+
+intersect(codes, codes2) # null
+all_codes <- c(codes, codes2)
 
 # Calculate phenotypic correlation matrix between ICD10 and OPCS codes
 icd_ind <- na.omit(match(codes, colnames(icd_f_prev_test_nonr)))
-opcs_ind <- na.omit(match(codes, colnames(opcs_f_prev_test_nonr)))
+opcs_ind <- na.omit(match(codes2, colnames(opcs_f_prev_test_nonr)))
 pheno_joint <- cbind(icd_f_prev_test_nonr[, icd_ind], opcs_f_prev_test_nonr[, opcs_ind])
 pheno_cor <- cor(pheno_joint)
 
@@ -45,6 +48,7 @@ dd <- (1 - abs(pheno_cor)) # transform to distance matrix
 d <- as.dist(dd)
 h1 <- hclust(d, method = "ward.D2")
 results <- data.table::fread("glm_results_extended_desc_test_nonrelatives.txt", data.table = F)
+table(h1$labels %in% results$code) # all true
 j <- match(h1$labels, results$code)
 table(results$code[j] == h1$labels) # all true
 h1$labels <- results$description[j]
