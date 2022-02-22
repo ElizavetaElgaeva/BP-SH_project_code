@@ -10,7 +10,7 @@ This script generates GWAS summary statistics for adjusted BP-SH in Discovery co
 This script performs validity checks by computing analytical heritability and genetic correlations of adjusted BP-SH.
 
 ## 01b_validity_check.sh
-This script performs validity checks by computing heritability and genetic correlations of adjusted BP-SH using LD Score tool implemented in GWAS-Map. 
+This script performs validity checks by computing heritability and genetic correlations of adjusted BP-SH using LD Score tool implemented in GWAS-MAP. 
 
 ## 02_linear_combination_aa_repl.R
 This script generates GWAS summary statistics for adjusted BP-SH in AA Replication cohort.
