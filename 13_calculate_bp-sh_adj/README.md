@@ -6,6 +6,12 @@ This script calculates coefficients of linear combination for adjusted BP-SH.
 ## 01_linear_combination.R
 This script generates GWAS summary statistics for adjusted BP-SH in Discovery cohort.
 
+## 01a_validity_check.R
+This script performs validity checks by computing analytical heritability and genetic correlations of adjusted BP-SH.
+
+## 01b_validity_check.sh
+This script performs validity checks by computing heritability and genetic correlations of adjusted BP-SH using LD Score tool implemented in GWAS-Map. 
+
 ## 02_linear_combination_aa_repl.R
 This script generates GWAS summary statistics for adjusted BP-SH in AA Replication cohort.
 
