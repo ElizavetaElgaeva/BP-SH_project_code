@@ -9,5 +9,5 @@ This folder contains scripts for unification and uploading of shared heredity tr
 ## 02_bp-sh
 This folder contains scripts for unification and uploading of back pain without shared heredity trait (CBP UGIT) from Discovery study to the GWAS-MAP database.
 
-## 03_bp-sh_adj
-This folder contains scripts for unification and uploading of CBP UGIT adjusted for head and knee pain from Discovery study to the GWAS-MAP database.
+## 03_bp_adj
+This folder contains scripts for unification and uploading of CBP adjusted for all other original pain traits from Discovery study to the GWAS-MAP database.

@@ -4,7 +4,10 @@ This folder contains scripts for unification and uploading of GWAS summary stati
 This folder contains scripts for unification and uploading of 6 pain traits from EA Replication study to the GWAS-MAP database.
 
 ## 01_sh
-This folder contains scripts for unification and uploading of shared heredity trait from EA Replication study to the GWAS-MAP database.
+This folder contains scripts for unification and uploading of shared heredity trait (SGIT) from EA Replication study to the GWAS-MAP database.
 
 ## 02_bp-sh
-This folder contains scripts for unification and uploading of back pain without shared heredity trait from EA Replication study to the GWAS-MAP database.
+This folder contains scripts for unification and uploading of back pain without shared heredity trait (CBP UGIT) from EA Replication study to the GWAS-MAP database.
+
+## 03_bp_adj
+This folder contains scripts for unification and uploading of CBP adjusted for all other original pain traits from EA Replication study to the GWAS-MAP database.
