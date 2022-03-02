@@ -35,4 +35,13 @@ This folder contains scripts generating replictaion tables.
 
 ## 11_association_plots
 This folder contains code preparing data for association plot visualization.
+
+## 12_prs
+This folder contains code for PRS analysis of CBP, SGIT and CBP UGIT.
+
+## 13_calculate_bp_adj
+This folder contains code adjusting CBP for all other original pain traits.
+
+## 14_bp_adj_meta-analysis
+This folder contains code for meta-analysis of CBP adjusted for all other original pain traits.
  
