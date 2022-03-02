@@ -1,4 +1,4 @@
-# Aim of this script is to perform clustering of the ICD10 and OPS traits
+# Aim of this script is to perform clustering of the ICD10 and OPCS traits
 
 setwd("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/")
 
