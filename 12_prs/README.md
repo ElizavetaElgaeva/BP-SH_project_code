@@ -41,3 +41,6 @@ This script visualizes the results of generalized linear model analyses of PRS, 
 
 ## 08_auc_models.R
 This script estimates the AUC values of generalized linear models including PRS data.
+
+## 09_sgit_ugit_phenotypes_474k.R
+This script calculates phenotypes for SGIT, CBP UGIT and unique genetic impact of CBP trait (CBP adjusted for all other original pain traits).
