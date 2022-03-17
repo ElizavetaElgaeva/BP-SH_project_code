@@ -8,7 +8,7 @@ load("./icd10_vs_bp_prs_test_nonrelatives_var1.RData")
 load("./opcs_vs_bp_prs_test_nonrelatives_var1.RData")
 ls()
 
-thr <- 0.05/(3*(length(bp_test_nonr_var1_cov) + length(opcs_bp_test_nonr_var1))) # p = 3.646973e-05 is a significance threshold for glm() analyses
+thr <- 0.05/(3*(length(bp_test_nonr_var1_cov) + length(opcs_bp_test_nonr_var1) + 6)) # p = 3.599712e-05; 6 - is a number of pain traits, glm results for them were added later
 
 # ICD10
 pval_icd <- lapply(bp_test_nonr_var1_cov, function(x) x[, 4])

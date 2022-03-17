@@ -13,7 +13,7 @@ colnames(tab)
 pp <- tab[, c("bp_p", "sh_p", "bp-sh_p")]
 pp <- as.matrix(pp)
 colnames(pp) <- c("bp_p", "sh_p", "bp-sh_p")
-thr <- 0.05/(1371 + 6) # 6 - number of pain traits
+thr <- 0.05/(3*(267 + 190 + 6)) # 267 is a number of icd10 codes, 190 is a number of opcs codes, 6 is a number of pain traits
 nonsig <- which(pp > thr)
 
 traits <- tab$description
