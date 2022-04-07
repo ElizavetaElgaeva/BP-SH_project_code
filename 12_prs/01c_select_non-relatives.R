@@ -9,7 +9,7 @@ dim(nonrel)
 head(nonrel)
 
 # Read file with test sample IIDs
-test <- fread("", data.table = F)
+test <- fread("test_id.txt", data.table = F)
 dim(test)
 head(test)
 
