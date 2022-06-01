@@ -68,7 +68,7 @@ table(unlist(empty) == TRUE)
 # Recalculate phenotypes using combined ICD10 codes 
 icd_full <- read.xlsx("ICD10_coding19.xlsx", sheetIndex = 1) # read full ICD10 code table, definition and description of each code 
 
-level_2 <- sapply(icd_full$coding, function(x) substr(x, 1, 3)) # extract first 3 symbols from coicd_full <- read.xlsx("ICD10_coding19.xlsx", sheetIndex = 1) # read full ICD10 code table, definition and description of each code
+level_2 <- sapply(icd_full$coding, function(x) substr(x, 1, 3)) # extract first 3 symbols from code
 
 level_2 <- unique(level_2)
 length(level_2) # 2062
