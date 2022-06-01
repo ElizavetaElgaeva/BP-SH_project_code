@@ -1,33 +1,34 @@
 # Aim of this script is to create a table with glm() results for BP/SH/BP-SH PRS
 # (Test sample, non-relatieves only; standardized PRS; ICD10 and OPCS codes combined at level 2)
+# Note: ICD10 from chapter I - XVII only; X, Y, Z OPCS codes excluded
 
 setwd("/mnt/polyomica/projects/bp-sh/data/12_prs")
 
 # Load full glm() results
 # BP 
-load("./icd10_level_2_vs_bp_prs_test_nonrelatives_var1.RData")
-load("./opcs_level_2_vs_bp_prs_test_nonrelatives_var1.RData")
+load("./icd10_level_2_chapter_1-17_vs_bp_prs_test_nonrelatives_var1.RData")
+load("./opcs_level_2_no_xyz_vs_bp_prs_test_nonrelatives_var1.RData")
 
 # SH
-load("./icd10_level_2_vs_sh_prs_test_nonrelatives_var1.RData")
-load("./opcs_level_2_vs_sh_prs_test_nonrelatives_var1.RData")
+load("./icd10_level_2_chapter_1-17_vs_sh_prs_test_nonrelatives_var1.RData")
+load("./opcs_level_2_no_xyz_vs_sh_prs_test_nonrelatives_var1.RData")
 
 # BP-SH
-load("./icd10_level_2_vs_bp_sh_prs_test_nonrelatives_var1.RData")
-load("./opcs_level_2_vs_bp_sh_prs_test_nonrelatives_var1.RData")
+load("./icd10_level_2_chapter_1-17_vs_bp_sh_prs_test_nonrelatives_var1.RData")
+load("./opcs_level_2_no_xyz_vs_bp_sh_prs_test_nonrelatives_var1.RData")
 
 
 # Load glm results filtered by statistical significance
 # BP PRS
-load("./glm_icd_level_2_bp_prs_filtered_test_nonrelatives.RData")
-load("./glm_opcs_level_2_bp_prs_filtered_test_nonrelatives.RData")
+load("./glm_icd_level_2_chapter_1-17_bp_prs_filtered_test_nonrelatives.RData")
+load("./glm_opcs_level_2_no_xyz_bp_prs_filtered_test_nonrelatives.RData")
 
 # SH PRS
-load("./glm_icd_level_2_sh_prs_filtered_test_nonrelatives.RData")
-load("./glm_opcs_level_2_sh_prs_filtered_test_nonrelatives.RData")
+load("./glm_icd_level_2_chapter_1-17_sh_prs_filtered_test_nonrelatives.RData")
+load("./glm_opcs_level_2_no_xyz_sh_prs_filtered_test_nonrelatives.RData")
 
 # BP-SH PRS
-load("./glm_opcs_level_2_bp_sh_prs_filtered_test_nonrelatives.RData")
+load("./glm_opcs_level_2_no_xyz_bp_sh_prs_filtered_test_nonrelatives.RData")
 
 ls()
 
@@ -41,8 +42,8 @@ codes2 <- c(codes2, names(sh_opcs))
 codes2 <- c(codes2, names(bp_sh_opcs))
 codes2 <- unique(codes2)
 
-intersect(codes, codes2) # "E03" "K63" "M47" "Z82" "Z85" "Z86" "Z90" "Z92" "J18"
-all_codes <- c(codes, codes2) # length(codes) = 135, length(codes2) = 87
+intersect(codes, codes2) # "E03" "K63" "M47" "J18"
+all_codes <- c(codes, codes2) # length(codes) = 92, length(codes2) = 57
 icd_ind <- c(1:length(codes))
 
 # Create a table
@@ -75,7 +76,7 @@ load("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/prev_opcs_level_2
 prev_full <- c(prev_icd_f[codes], prev_opcs_f[codes2])
 tab$"code_prevalence" <- prev_full
 
-data.table::fwrite(tab, file = "glm_results_level_2_codes_test_nonrel.txt", sep = "\t", dec = ".")
+data.table::fwrite(tab, file = "glm_results_level_2_preselected_codes_test_nonrel.txt", sep = "\t", dec = ".")
 
 # Extend the table
 load("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/bp_prs_iid_icd10_filtered_test_nonrelatives_prs_var1.RData")
@@ -120,7 +121,7 @@ tab2$"code_prevalence" <- unlist(pain_prev)
 
 tab_joint <- rbind(tab, tab2)
 
-data.table::fwrite(tab_joint, file = "glm_results_level_2_codes_extended_test_nonrelatives.txt", sep = "\t", dec = ".")
+data.table::fwrite(tab_joint, file = "glm_results_level_2_preselected_codes_extended_test_nonrelatives.txt", sep = "\t", dec = ".")
 
 # Add description
 icd_des <- readxl::read_excel("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/ICD10_coding19.xlsx", sheet = 1)
@@ -137,4 +138,4 @@ table(tab_joint$code[i2] == icd_opcs_des$"coding")
 tab_joint$description <- NA
 tab_joint$description[i2] <- icd_opcs_des$meaning
 tab_joint$description[-i2] <- c("Chronic back pain", "Chronic neck pain", "Chronic hip pain", "Chronic stomach pain", "Chronic knee pain", "Chronic headache")
-data.table::fwrite(tab_joint, file = "glm_results_level_2_extended_desc_test_nonrelatives.txt", sep = "\t", dec = ".")
+data.table::fwrite(tab_joint, file = "glm_results_level_2_preselected_codes_extended_desc_test_nonrelatives.txt", sep = "\t", dec = ".")
