@@ -59,4 +59,5 @@ prev_opcs_f <- prev[ind_prev]
 save(bp_f_test_nonr, file = "bp_prs_iid_icd10_filtered_test_nonrelatives.RData")
 save(icd_f_l2_test_nonr_prev, file = "icd10_iid_level_2_cbp_prev_filtered_test_nonrelatives.RData")
 save(opcs_f_l2_test_nonr_prev, file = "opcs_iid_level_2_cbp_prev_filtered_test_nonrelatives.RData")
-
+save(prev_icd_f, file = "prev_of_icd10_level_2_filtered.RData")
+save(prev_opcs_f, file = "prev_opcs_level_2_filtered.RData")
