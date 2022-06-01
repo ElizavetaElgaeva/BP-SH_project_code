@@ -1,6 +1,8 @@
 # Aim of this script is to filter OPCS data
 
 library(data.table)
+library(readxl)
+library(xlsx)
 
 setwd("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS/")
 
@@ -51,22 +53,28 @@ table(unlist(empty)[-c(8003:8023)] == TRUE)
 #8002
 # no emty fields
 
-# Filter by prevalence
-prev <- lapply(opcs_f[, -c(1, 8003:8023)], function(x) sum(x))
-prev <- unlist(prev)
-n <- nrow(opcs_f)
-prev <- lapply(prev, function(x) x/n*100)
-ind_prev <- which(prev > 0.5 & prev < 99.5)
-opcs_f_prev <- opcs_f[, c(1, ind_prev + 1)]
-prev_opcs_f <- prev[ind_prev]
+# Recalculate phenotypes using combined OPCS codes 
+opcs_full <- read.xlsx("OPCS_coding240.xlsx", sheetIndex = 1) # read full OPCS code table, definition and description of each code 
+
+level_2 <- sapply(opcs_full$coding, function(x) substr(x, 1, 3)) # extract first 3 symbols from coicd_full
+
+level_2 <- unique(level_2)
+length(level_2) # 1524
+
+codes_to_combine <- sapply(level_2, function(x) grep(colnames(opcs), pattern = x)) # select which OPCS codes from UKBB data could be combined
+
+grouped_pheno <- lapply(codes_to_combine, function(x) opcs_f[, x]) # list of grouped phenotypes by OPCS codes of the 2nd level
+grouped_pheno <- lapply(grouped_pheno, function(x) as.data.frame(x)) 
+
+pulled_pheno <- lapply(grouped_pheno, function(x) rowSums(x)) # obtain the sum of all columns with codes within one level
+pulled_pheno <- lapply(pulled_pheno, function(x) replace(x, !is.na(x) & x != 0, 1)) # recode the sum in binary way
+
+tmp <- as.data.frame(do.call(cbind, pulled_pheno)) # obtain a data frame from list of sum vectors
+opcs_f <- opcs_f[, c(1, 8003:8023)] # extract part of the table containing no OPCS codes
+opcs_f_l2 <- cbind(opcs_f, tmp)
 
 # Save data
-opcs_f <- opcs_f[, -c(8003:8023)]
-readme_opcs_f <- "OPCS table with only IIDs presented in bp_prs_iid_icd10_filtered.RData"
-save(opcs_f, readme_opcs_f, file = "./opcs_iid_cbp_filtered.RData")
+readme_opcs_f_l2 <- "OPCS table (level 2 codes) with only IIDs presented in bp_prs_iid_icd10_filtered.RData"
+save(opcs_f_l2, readme_opcs_f_l2, file = "./opcs_level_2_iid_cbp_filtered.RData")
 
-readme_opcs_f_prev <- "OPCS table with only IIDs presented in bp_prs_iid_icd10_filtered.RData and OPCS codes for binary traits with prevalence > 0.5% and < 99.5%"
-save(opcs_f_prev, readme_opcs_f_prev, file = "./opcs_iid_cbp_prev_filtered.RData")
 
-readme_prev_opcs_f <- "Prevalence of OPCS codes from opcs_iid_cbp_prev_filtered.RData (prevalence > 0.5% and < 99.5%)"
-save(prev_opcs_f, readme_prev_opcs_f, file = "./prev_opcs_filtered.RData")
