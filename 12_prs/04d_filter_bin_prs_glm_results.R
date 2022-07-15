@@ -9,6 +9,7 @@ load("icd10_level_2_chapter_1-17_vs_bin_prs_10_10.RData")
 load("icd10_level_2_chapter_1-17_vs_bin_prs_10_90.RData")
 load("icd10_level_2_chapter_1-17_vs_bin_sh_prs_90_10.RData")
 load("icd10_level_2_chapter_1-17_vs_bin_prs_90_90.RData")
+#load("icd10_chapter1-17vs_bin_sh_prs_90_sh.RData")
 # load("icd10_vs_bin_sh_prs_90_sh.RData")
 #load("/mnt/polyomica/projects/bp-sh/data/12_prs/icd10_level_2_chapter_1-17_vs_bin_sh_prs_90_sh.RData")
  
@@ -17,14 +18,14 @@ load("opcs_level_2_no_xyz_vs_bin_prs_10_10.RData")
 load("opcs_level_2_no_xyz_vs_bin_prs_10_90.RData")
 load("opcs_level_2_no_xyz_vs_bin_sh_prs_90_10.RData")
 load("opcs_level_2_no_xyz_vs_bin_prs_90_90.RData")
-
+#load("opcs_no_xyz_vs_bin_prs_90_bp_sh.RData")
 # load("opcs_vs_bin_prs_10_sh.RData")
 #load("opcs_bin_prs_10_bp_sh.RData")
 ls()
 
 # Set significance threshold
 thr <- 0.05 / (4*(length(if_10_10_vs_icd) + length(if_10_10_vs_opcs))) # 4.208754e-05; length(if_10_10_vs_icd) = 165, length(if_10_10_vs_opcs) = 132
-#thr <- 0.05 / (4*(length(if_10_sh_vs_icd) + length(if_90_sh_vs_opcs))) # 2.73523e-05; length(if_10_sh_vs_icd) = 267, length(if_90_bp_sh_vs_opcs) = 190
+#thr <- 0.05 / (4*(length(if_10_sh_vs_icd) + length(if_90_sh_vs_opcs))) # 4.464286e-05; length(if_10_sh_vs_icd) = 170, length(if_90_bp_sh_vs_opcs) = 110
 
 
 # Start with ICD10 against binary coded PRS trait reflecting relatedness to 0.1 quantile for both SH and BP-SH PRS 
@@ -38,7 +39,7 @@ summary(unlist(pval_icd_10_10))
 #pval_icd_10_sh_i <- which(pval_icd_10_sh < thr) # I10
 #summary(unlist(pval_icd_10_sh))
 #     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-#0.0000013 0.0595199 0.2203845 0.3285945 0.5591212 0.9877788
+#0.0000013 0.0579529 0.2621130 0.3374100 0.5573738 0.9877788
 
 or_icd_10_10 <- lapply(if_10_10_vs_icd, function(x) exp(x[, 1]))
 summary(unlist(or_icd_10_10))
@@ -50,7 +51,7 @@ or_icd_10_10_i <- which(beta_icd_10_10 > log(2))
 #or_icd_10_sh <- lapply(if_10_sh_vs_icd, function(x) exp(x[, 1]))
 #summary(unlist(or_icd_10_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-# 0.3203  0.7121  0.8189  0.8516  0.9511  1.5842
+# 0.3203  0.7025  0.8148  0.8339  0.9326  1.5842
 #beta_icd_10_sh <- lapply(if_10_sh_vs_icd, function(x) abs(x[, 1]))
 #or_icd_10_sh_i <- which(beta_icd_10_sh > log(2)) # J348  K29 I517
 #intersect(pval_icd_10_sh_i, or_icd_10_sh_i) # 0 elements
@@ -67,7 +68,7 @@ summary(unlist(pval_icd_10_90))
 #pval_icd_10_bp_sh_i <- which(pval_icd_10_bp_sh < thr) # 0 elements
 #summary(unlist(pval_icd_10_bp_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
-#0.0005579 0.2143139 0.5055283 0.4837844 0.7142593 0.9963940
+#0.0005579 0.2160958 0.5131061 0.4774730 0.7023528 0.9844495
 
 or_icd_10_90 <- lapply(if_10_90_vs_icd, function(x) exp(x[, 1]))
 summary(unlist(or_icd_10_90))
@@ -80,7 +81,7 @@ or_icd_10_90_i <- which(beta_icd_10_90 > log(2))
 #or_icd_10_bp_sh <- lapply(if_10_bp_sh_vs_icd, function(x) exp(x[, 1]))
 #summary(unlist(or_icd_10_bp_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-# 0.2726  0.8777  1.0032  1.0011  1.1226  1.8075
+# 0.3525  0.8676  1.0047  1.0017  1.1099  1.8075
 #beta_icd_10_bp_sh <- lapply(if_10_bp_sh_vs_icd, function(x) abs(x[, 1]))
 #or_icd_10_bp_sh_i <- which(beta_icd_10_bp_sh > log(2))
 
@@ -104,12 +105,12 @@ or_icd_90_10_i <- which(beta_icd_90_10 > log(2))
 #pval_icd_90_sh_i <- which(pval_icd_90_sh < thr) # K219 M754 M545 M179 K449 F171
 #summary(unlist(pval_icd_90_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
-#0.0000004 0.0504154 0.3091381 0.3568354 0.6085242 0.9882826
+#0.0000004 0.0439470 0.3050774 0.3417980 0.5706464 0.9807432
 
 #or_icd_90_sh <- lapply(if_90_sh_vs_icd, function(x) exp(x[, 1]))
 #summary(unlist(or_icd_90_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-#0.652   1.006   1.156   1.165   1.321   1.919
+#0.652   1.009   1.167   1.181   1.351   1.919
 #beta_icd_90_sh <- lapply(if_90_sh_vs_icd, function(x) abs(x[, 1]))
 #or_icd_90_sh_i <- which(beta_icd_90_sh > log(2))
 #intersect(pval_icd_90_sh_i, or_icd_90_sh_i) # 0
@@ -134,12 +135,12 @@ or_icd_90_90_i <- which(beta_icd_90_90 > log(2))
 #pval_icd_90_bp_sh_i <- which(pval_icd_90_bp_sh < thr) # 0 elements
 #summary(unlist(pval_icd_90_bp_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
-#0.004072 0.296856 0.515964 0.520643 0.771527 0.990672
+#0.004072 0.284498 0.508252 0.521366 0.776025 0.990672
 
 #or_icd_90_bp_sh <- lapply(if_90_bp_sh_vs_icd, function(x) exp(x[, 1]))
 #summary(unlist(or_icd_90_bp_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-# 0.4502  0.8900  0.9980  1.0037  1.1201  1.7410
+# 0.4502  0.8938  1.0031  1.0015  1.1128  1.7410
 #beta_icd_90_bp_sh <- lapply(if_90_bp_sh_vs_icd, function(x) abs(x[, 1]))
 #or_icd_90_bp_sh_i <- which(beta_icd_90_bp_sh > log(2))
 
@@ -160,15 +161,15 @@ or_opcs_10_10_i <- which(beta_opcs_10_10 > log(2))
 
 
 #pval_opcs_10_sh <- lapply(if_10_sh_vs_opcs, function(x) x[, 4])
-#pval_opcs_10_sh_i <- which(pval_opcs_10_sh < thr) # X998 G451 Z943
+#pval_opcs_10_sh_i <- which(pval_opcs_10_sh < thr) # G451
 #summary(unlist(pval_opcs_10_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
-#0.0000046 0.0937551 0.3626877 0.3785776 0.5853029 0.9979890
+#0.0000164 0.1272975 0.3662814 0.3917125 0.5751957 0.9749227
 
 #or_opcs_10_sh <- lapply(if_10_sh_vs_opcs, function(x) exp(x[, 1]))
 #summary(unlist(or_opcs_10_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-# 0.4288  0.7651  0.8542  0.8907  0.9534  2.9243
+# 0.4816  0.7676  0.8585  0.8871  0.9469  2.9243
 #beta_opcs_10_sh <- lapply(if_10_sh_vs_opcs, function(x) abs(x[, 1]))
 #or_opcs_10_sh_i <- which(beta_opcs_10_sh > log(2))
 #intersect(or_opcs_10_sh_i, pval_opcs_10_sh_i) # 0
@@ -193,12 +194,12 @@ or_opcs_10_90_i <- which(beta_opcs_10_90 > log(2))
 #pval_opcs_10_bp_sh_i <- which(pval_opcs_10_bp_sh < thr) # 0 elements
 #summary(unlist(pval_opcs_10_bp_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
-# 0.00898 0.23841 0.46454 0.47583 0.74156 0.97118
+#0.00898 0.17382 0.47021 0.46487 0.75514 0.97118
 
 #or_opcs_10_bp_sh <- lapply(if_10_bp_sh_vs_opcs, function(x) exp(x[, 1]))
 #summary(unlist(or_opcs_10_bp_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-# 0.3244  0.8393  0.9497  0.9507  1.0661  1.5693
+# 0.3244  0.8230  0.9464  0.9325  1.0487  1.5693
 #beta_opcs_10_bp_sh <- lapply(if_10_bp_sh_vs_opcs, function(x) abs(x[, 1]))
 #or_opcs_10_bp_sh_i <- which(beta_opcs_10_bp_sh > log(2))
 
@@ -221,19 +222,19 @@ prs_90_10_opcs_i <- intersect(pval_opcs_90_10_i, or_opcs_90_10_i) # 1 element; E
 
 
 #pval_opcs_90_sh <- lapply(if_90_sh_vs_opcs, function(x) x[, 4])
-#pval_opcs_90_sh_i <- which(pval_opcs_90_sh < thr) # X998 G459 G451 H229 Z942 Z274 Y767 Z812
+#pval_opcs_90_sh_i <- which(pval_opcs_90_sh < thr) # G459 G451 H229 W401 
 #summary(unlist(pval_opcs_90_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
-#0.00000 0.08527 0.32319 0.39537 0.66525 0.98799
+#0.0000  0.1062  0.3175  0.3988  0.6731  0.9880
 
 #or_opcs_90_sh <- lapply(if_90_sh_vs_opcs, function(x) exp(x[, 1]))
 #summary(unlist(or_opcs_90_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-# 0.3534  0.9877  1.1162  1.1375  1.3119  2.0877
+#0.3534  0.9920  1.1162  1.1436  1.3368  1.9773
 #beta_opcs_90_sh <- lapply(if_90_sh_vs_opcs, function(x) abs(x[, 1]))
 #or_opcs_90_sh_i <- which(beta_opcs_90_sh > log(2))
 
-# prs_90_sh_opcs_i <- intersect(pval_opcs_90_sh_i, or_opcs_90_sh_i) # Z812
+# prs_90_sh_opcs_i <- intersect(pval_opcs_90_sh_i, or_opcs_90_sh_i) # 0
 
 
 # Start with OPCS against binary coded PRS trait reflecting relatedness to 0.9 quantile both for SH and BP-SH PRS
@@ -255,12 +256,12 @@ or_opcs_90_90_i <- which(beta_opcs_90_90 > log(2))
 #pval_opcs_90_bp_sh_i <- which(pval_opcs_90_bp_sh < thr) # 0 elements
 #summary(unlist(pval_opcs_90_bp_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
-#0.004296 0.254544 0.523665 0.514358 0.774792 0.998465
+#0.004296 0.265883 0.537836 0.527552 0.798690 0.998465
 
 #or_opcs_90_bp_sh <- lapply(if_90_bp_sh_vs_opcs, function(x) exp(x[, 1]))
 #summary(unlist(or_opcs_90_bp_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-# 0.2729  0.9014  1.0009  1.0098  1.1160  1.6843
+# 0.2729  0.8943  0.9929  0.9979  1.1041  1.6843
 #beta_opcs_90_bp_sh <- lapply(if_90_bp_sh_vs_opcs, function(x) abs(x[, 1]))
 #or_opcs_90_bp_sh_i <- which(beta_opcs_90_bp_sh > log(2))
 
