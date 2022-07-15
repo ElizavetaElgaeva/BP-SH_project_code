@@ -24,6 +24,24 @@ table(l_bp_sh)
 
 table(l_sh,l_bp_sh)
 
+# Recode PRS as binary trait based on relatedness to 0.1/0.9 quantile for SH/BP-SH 
+if_10_sh <- if_10_bp_sh <- if_90_sh <- if_90_bp_sh <- rep(0, length(sh)) # generate new blank variables reflecting relatedness to specific group
+
+if_10_sh[which(l_sh == 10)] <- 1 # in 0.1 quantile for SH
+table(if_10_sh)
+
+if_10_bp_sh[which(l_bp_sh == 10)] <- 1 # in 0.1 quantile for BP-SH
+table(if_10_bp_sh)
+
+if_90_sh[which(l_sh == 90)] <- 1 # in 0.9 quantile for SH
+table(if_90_sh)
+
+if_90_bp_sh[which(l_bp_sh == 90)] <- 1 # in 0.9 quantile for BP-SH
+table(if_90_bp_sh)
+
+save(if_10_sh, if_10_bp_sh, if_90_sh, if_90_bp_sh, file = "binary_prs_test_nonrelatives_cases_nonoverlapping_quantiles.RData")
+
+
 # Obtain values from 0.1/0.9 quantiles of BP-SH and SH only
 if_10_10 <- if_10_90 <- if_90_10 <- if_90_90 <- rep(0, length(sh)) # generate new blank variables reflecting relatedness to specific group
 
