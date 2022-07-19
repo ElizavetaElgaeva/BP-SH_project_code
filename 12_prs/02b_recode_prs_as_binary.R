@@ -1,4 +1,4 @@
-# Aim of this script is to standardize PRS values for CBP UGIT and SGIT in cases and recode them to binary traits
+i# Aim of this script is to standardize PRS values for CBP UGIT and SGIT in cases and recode them to binary traits
 
 setwd("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS")
 
@@ -6,10 +6,16 @@ setwd("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS")
 load("bp_cases_prs_iid_icd10_filtered_test_nonrelatives.RData")
 ls()
 
+#load("bp_cases_prs_iid_icd10_filtered_all_nonrel.RData")
+
 # Standardize PRS
 colnames(bp_cases_f_test_nonr)
 sh <- bp_cases_f_test_nonr$"prs_sh"/sqrt(var(bp_cases_f_test_nonr$"prs_sh"))
 bp_sh <- bp_cases_f_test_nonr$"prs_bp_sh"/sqrt(var(bp_cases_f_test_nonr$"prs_bp_sh"))
+
+#colnames(bp_cases_nonr)
+#sh <- bp_cases_nonr$"prs_sh"/sqrt(var(bp_cases_nonr$"prs_sh"))
+#bp_sh <- bp_cases_nonr$"prs_bp_sh"/sqrt(var(bp_cases_nonr$"prs_bp_sh"))
 
 # Recode PRS
 l_sh <- rep(0, length(sh)) # new variable derived from sh
@@ -40,7 +46,7 @@ if_90_bp_sh[which(l_bp_sh == 90)] <- 1 # in 0.9 quantile for BP-SH
 table(if_90_bp_sh)
 
 save(if_10_sh, if_10_bp_sh, if_90_sh, if_90_bp_sh, file = "binary_prs_test_nonrelatives_cases_nonoverlapping_quantiles.RData")
-
+#save(if_10_sh, if_10_bp_sh, if_90_sh, if_90_bp_sh, file = "binary_prs_all_nonrel_cases_nonoverlapping_quantiles.RData")
 
 # Obtain values from 0.1/0.9 quantiles of BP-SH and SH only
 if_10_10 <- if_10_90 <- if_90_10 <- if_90_90 <- rep(0, length(sh)) # generate new blank variables reflecting relatedness to specific group

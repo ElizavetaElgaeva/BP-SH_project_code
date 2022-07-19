@@ -24,12 +24,28 @@ setwd("/home/common/projects/pain_project/UKBB_pheno_ICD10_OPCS")
 load("./bp_prs_iid_icd10_filtered.RData") # BP data
 load("./icd10_iid_level_2_cbp_filtered.RData") # ICD10 data
 load("./opcs_level_2_iid_cbp_filtered.RData") # OPCS data
+#load("icd10_iid_cbp_filtered.RData")
+#load("opcs_iid_cbp_filtered.RData")
 
 ls()
 
 table(inter %in% bp_f$IID)
 table(inter %in% icd_f_l2$IID)
 table(inter %in% opcs_f_l2$IID)
+
+#table(nonrel$V1 %in% bp_f$IID)
+#i1 <- which(nonrel$V1 %in% bp_f$IID)
+#nonrel <- nonrel[i1, ]
+#i2 <- match(nonrel, bp_f$IID)
+#bp_f <- bp_f[i2, ]
+#table(nonrel == bp_f$IID)
+
+#table(nonrel == icd_f$IID[i2])
+#icd_f <- icd_f[i2, ]
+
+#table(nonrel == opcs_f$IID[i2])
+#opcs_f <- opcs_f[i2, ]
+
 
 # IID order is the same in bp_f, icd_f_l2, opcs_f_l2
 i <- which(bp_f$IID %in% inter)
@@ -47,6 +63,15 @@ bp_cases_f_test_nonr <- bp_f_test_nonr[cases, ]
 icd_cases_f_l2_test_nonr <- icd_f_l2_test_nonr[cases, ]
 opcs_cases_f_l2_test_nonr <- opcs_f_l2_test_nonr[cases, ]
 
+#table(bp_f$back)
+#     0      1
+#299970  65011
+#cases <- which(bp_f$back == 1)
+#bp_cases_nonr <- bp_f[cases, ]
+#icd_cases_nonr <- icd_f[cases, ]
+#opcs_cases_nonr <- opcs_f[cases, ]
+
+
 # Filter ICD10 codes by prevalence
 prev <- lapply(icd_cases_f_l2_test_nonr[, -c(1:22)], function(x) sum(x)) # the first 22 columns contain no ICD10 codes
 prev <- unlist(prev)
@@ -55,6 +80,14 @@ prev <- lapply(prev, function(x) x/n*100)
 ind_prev <- which(prev > 0.5 & prev < 99.5) # 307 ICD10 codes meet the criteria
 icd_cases_f_l2_test_nonr_prev <- icd_cases_f_l2_test_nonr[, c(1:22, ind_prev + 22)] # need to shift the indexes since the were defined in data without first 22 columns
 prev_icd_cases_f <- prev[ind_prev]
+
+#prev <- lapply(icd_cases_nonr[, -c(1)], function(x) sum(x)) 
+#prev <- unlist(prev)
+#n <- nrow(icd_cases_nonr)
+#prev <- lapply(prev, function(x) x/n*100)
+#ind_prev <- which(prev > 0.5 & prev < 99.5) # 375 ICD10 codes meet the criteria
+#icd_cases_nonr_prev <- icd_cases_nonr[, c(1, ind_prev + 1)]
+#prev_icd_cases_f <- prev[ind_prev]
 
 # Filter OPCS codes by prevalence
 prev <- lapply(opcs_cases_f_l2_test_nonr[, -c(1:22)], function(x) sum(x)) # the first 22 columns contain no OPCS codes
@@ -65,9 +98,22 @@ ind_prev <- which(prev > 0.5 & prev < 99.5) # 246 OPCS codes meet the criteria
 opcs_cases_f_l2_test_nonr_prev <- opcs_cases_f_l2_test_nonr[, c(1:22, ind_prev + 22)] # need to shift the indexes since the were defined in data without first 22 columns
 prev_opcs_cases_f <- prev[ind_prev]
 
+#prev <- lapply(opcs_cases_nonr[, -c(1)], function(x) sum(x))
+#prev <- unlist(prev)
+#n <- nrow(opcs_cases_nonr)
+#prev <- lapply(prev, function(x) x/n*100)
+#ind_prev <- which(prev > 0.5 & prev < 99.5) # 265 OPCS codes meet the criteria
+#opcs_cases_nonr_prev <- opcs_cases_nonr[, c(1, ind_prev + 1)]
+#prev_opcs_cases_f <- prev[ind_prev]
+
 # Save data
 save(bp_cases_f_test_nonr, file = "bp_cases_prs_iid_icd10_filtered_test_nonrelatives.RData")
 save(icd_cases_f_l2_test_nonr_prev, file = "icd10_iid_cases_level_2_cbp_prev_filtered_test_nonrelatives.RData")
 save(opcs_cases_f_l2_test_nonr_prev, file = "opcs_iid_cases_level_2_cbp_prev_filtered_test_nonrelatives.RData")
 save(prev_icd_cases_f, file = "prev_of_icd10_level_2_cases_filtered.RData")
 save(prev_opcs_cases_f, file = "prev_opcs_level_2_cases_filtered.RData")
+#save(bp_cases_nonr, file = "bp_cases_prs_iid_icd10_filtered_all_nonrel.RData")
+#save(icd_cases_nonr_prev, file = "icd10_iid_cases_cbp_prev_filtered_all_nonrel.RData")
+#save(prev_icd_cases_f, file = "prev_of_icd10_cases_all_nonrel_filtered.RData")
+#save(opcs_cases_nonr_prev, file = "opcs_iid_cases_cbp_prev_filtered_all_nonrel.RData")
+#save(prev_opcs_cases_f, file = "prev_opcs_cases_all_nonrel_filtered.RData")

@@ -8,6 +8,10 @@ load("bp_cases_prs_iid_icd10_filtered_test_nonrelatives.RData") # load initial P
 load("binary_prs_test_nonrelatives_cases.RData") # binary coded PRS data
 load("./opcs_iid_cases_level_2_cbp_prev_filtered_test_nonrelatives.RData") # OPCS data
 
+#load("bp_cases_prs_iid_icd10_filtered_all_nonrel.RData") # all cases
+#load("binary_prs_all_nonrel_cases_nonoverlapping_quantiles.RData") # binary coded PRS data; nonoverlapping quantiles; all cases
+#load("opcs_iid_cases_cbp_prev_filtered_all_nonrel.RData")
+
 #load("binary_prs_test_nonrelatives_cases_nonoverlapping_quantiles.RData") # binary coded PRS data, nonoverlapping quantiles
 #load("opcs_iid_cbp_prev_filtered.RData") # OPCS data, non-combined
 
@@ -19,6 +23,15 @@ length(if_10_90) == nrow(opcs_cases_f_l2_test_nonr_prev) # TRUE
 length(if_90_10) == nrow(opcs_cases_f_l2_test_nonr_prev) # TRUE
 length(if_90_90) == nrow(opcs_cases_f_l2_test_nonr_prev) # TRUE
 
+# All cases
+
+#length(if_10_sh) == nrow(opcs_cases_nonr_prev) # TRUE
+#length(if_10_bp_sh) == nrow(opcs_cases_nonr_prev) # TRUE
+#length(if_90_sh) == nrow(opcs_cases_nonr_prev) # TRUE
+#length(if_90_bp_sh) == nrow(opcs_cases_nonr_prev) # TRUE
+
+
+# Tesst sample
 
 #ind <- match(bp_cases_f_test_nonr$IID, opcs_f_prev$IID)
 #opcs_f_prev <- opcs_f_prev[ind, ]
@@ -28,7 +41,8 @@ colnames(opcs_cases_f_l2_test_nonr_prev)[1:22]
 dim(opcs_cases_f_l2_test_nonr_prev)
 
 #chapters <- c('X', 'Y', 'Z')
-#excl <- lapply(chapters, function(x) grep(x, colnames(opcs_f_prev)))
+#excl <- lapply(chapters, function(x) grep(x, colnames(opcs_cases_nonr_prev))) # all cases
+#excl <- lapply(chapters, function(x) grep(x, colnames(opcs_f_prev))) # test
 #excl <- unlist(excl)
 
 # Start with binary coded PRS trait reflecting relatedness to 0.1 quantile for both SH and BP-SH PRS; X, Y, Z codes excluded
@@ -40,6 +54,18 @@ if_10_10_vs_opcs <- lapply(if_10_10_vs_opcs, function(x) tail(summary(x)$coeffic
 readme_if_10_10_vs_opcs <- "glm(binomial) results for OPCS codes level 2, X, Y, Z codes excluded, from opcs_iid_cases_level_2_cbp_prev_filtered_test_nonrelatives.RData against binary coded PRS trait reflecting relatedness to 0.1 quantile for both SH and BP-SH"
 save(if_10_10_vs_opcs, readme_if_10_10_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_level_2_no_xyz_vs_bin_prs_10_10.RData") 
 
+# All cases
+
+#if_10_sh_vs_opcs <- lapply(opcs_cases_nonr_prev[, -c(1, excl)], function(x)
+#                                              { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_10_sh, data = bp_cases_nonr, family = "binomial") })
+
+#if_10_sh_vs_opcs <- lapply(if_10_sh_vs_opcs, function(x) tail(summary(x)$coefficients, n = 1))
+
+#readme_if_10_sh_vs_opcs <- "glm(binomial) results for OPCS codes, X, Y, Z codes excluded, from opcs_iid_cases_cbp_prev_filtered_all_nonrel.RData against binary coded PRS trait reflecting relatedness to 0.1 quantile for SH"
+#save(if_10_sh_vs_opcs, readme_if_10_sh_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_vs_bin_prs_10_sh_all_cases.RData")
+
+
+# Test sample
 
 #if_10_sh_vs_opcs <- lapply(opcs_f_prev[, -c(1, excl)], function(x)
 #			                       { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_10_sh, data = bp_cases_f_test_nonr, family = "binomial") })
@@ -50,6 +76,19 @@ save(if_10_10_vs_opcs, readme_if_10_10_vs_opcs, file = "/mnt/polyomica/projects/
 #save(if_10_sh_vs_opcs, readme_if_10_sh_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_vs_bin_prs_10_sh.RData")
 
 
+# All cases
+
+#if_10_bp_sh_vs_opcs <- lapply(opcs_cases_nonr_prev[, -c(1, excl)], function(x)
+#                                              { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_10_bp_sh, data = bp_cases_nonr, family = "binomial") })
+
+#if_10_bp_sh_vs_opcs <- lapply(if_10_bp_sh_vs_opcs, function(x) tail(summary(x)$coefficients, n = 1))
+
+#readme_if_10_bp_sh_vs_opcs <- "glm(binomial) results for OPCS codes, X, Y, Z codes excluded, from opcs_iid_cases_cbp_prev_filtered_all_nonrel.RData against binary coded PRS trait reflecting relatedness to 0.1 quantile for BP-SH"
+#save(if_10_bp_sh_vs_opcs, readme_if_10_bp_sh_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_bin_prs_10_bp_sh_all_cases.RData")
+
+
+# Test sample
+
 #if_10_bp_sh_vs_opcs <- lapply(opcs_f_prev[, -c(1, excl)], function(x)
 #			                       { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_10_bp_sh, data = bp_cases_f_test_nonr, family = "binomial") })
 
@@ -59,6 +98,19 @@ save(if_10_10_vs_opcs, readme_if_10_10_vs_opcs, file = "/mnt/polyomica/projects/
 #save(if_10_bp_sh_vs_opcs, readme_if_10_bp_sh_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_bin_prs_10_bp_sh.RData")
 
 
+# All cases
+
+#if_90_sh_vs_opcs <- lapply(opcs_cases_nonr_prev[, -c(1, excl)], function(x)
+#                                              { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_90_sh, data = bp_cases_nonr, family = "binomial") })
+
+#if_90_sh_vs_opcs <- lapply(if_90_sh_vs_opcs, function(x) tail(summary(x)$coefficients, n = 1))
+
+#readme_if_90_sh_vs_opcs <- "glm(binomial) results for OPCS codes, X, Y, Z codes excluded, from opcs_iid_cases_cbp_prev_filtered_all_nonrel.RData against binary coded PRS trait reflecting relatedness to 0.9 quantile for SH"
+#save(if_90_sh_vs_opcs, readme_if_90_sh_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_vs_bin_prs_90_sh_all_cases.RData")
+
+
+# Test sample
+
 #if_90_sh_vs_opcs <- lapply(opcs_f_prev[, -c(1, excl)], function(x)
 #			                       { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_90_sh, data = bp_cases_f_test_nonr, family = "binomial") })
 
@@ -67,6 +119,19 @@ save(if_10_10_vs_opcs, readme_if_10_10_vs_opcs, file = "/mnt/polyomica/projects/
 #readme_if_90_sh_vs_opcs <- "glm(binomial) results for OPCS codes, X, Y, Z codes excluded, from opcs_iid_cbp_prev_filtered.RData against binary coded PRS trait reflecting relatedness to 0.9 quantile for SH"
 #save(if_90_sh_vs_opcs, readme_if_90_sh_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_vs_bin_prs_90_sh.RData")
 
+
+# All cases
+
+#if_90_bp_sh_vs_opcs <- lapply(opcs_cases_nonr_prev[, -c(1, excl)], function(x)
+#                                                                         { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_90_bp_sh, data = bp_cases_nonr, family = "binomial") })
+
+#if_90_bp_sh_vs_opcs <- lapply(if_90_bp_sh_vs_opcs, function(x) tail(summary(x)$coefficients, n = 1))
+
+#readme_if_90_bp_sh_vs_opcs <- "glm(binomial) results for OPCS codes, X, Y, Z codes excluded, from opcs_iid_cases_cbp_prev_filtered_all_nonrel.RData against binary coded PRS trait reflecting relatedness to 0.9 quantile for BP-SH"
+#save(if_90_bp_sh_vs_opcs, readme_if_90_bp_sh_vs_opcs, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_vs_bin_prs_90_bp_sh_all_cases.RData")
+
+
+# Test sample
 
 #if_90_bp_sh_vs_opcs <- lapply(opcs_f_prev[, -c(1, excl)], function(x)
 #			                                                  { glm(x ~ Age + Sex + batch + pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 + if_90_bp_sh, data = bp_cases_f_test_nonr, family = "binomial") })
