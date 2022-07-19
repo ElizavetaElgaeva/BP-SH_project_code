@@ -60,6 +60,9 @@ summary(unlist(pval_icd_10_10))
 #summary(unlist(pval_icd_10_sh))
 #     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
 #0.0000013 0.0579529 0.2621130 0.3374100 0.5573738 0.9877788
+#icd_vs_10_sh_sign <- do.call(rbind.data.frame, if_10_sh_vs_icd[pval_icd_10_sh_i])
+#readme_icd_vs_10_sh_sign <- "Statistically significant results of glm conidering ICD10 codes, not-combined, chapters 1-17, as dependent variable from binary coded SH PRS (10th percentile - 1, other - 0), test sample of nonrelatives, cases"
+#save(icd_vs_10_sh_sign, readme_icd_vs_10_sh_sign, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/icd_ch1-17_vs_10_sh_test_nonr_cases_signif.RData")
 
 or_icd_10_10 <- lapply(if_10_10_vs_icd, function(x) exp(x[, 1]))
 summary(unlist(or_icd_10_10))
@@ -186,6 +189,10 @@ or_icd_90_10_i <- which(beta_icd_90_10 > log(2))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
 #0.0000004 0.0439470 0.3050774 0.3417980 0.5706464 0.9807432
 
+#icd_vs_90_sh_sign <- do.call(rbind.data.frame, if_90_sh_vs_icd[pval_icd_90_sh_i])
+#readme_icd_vs_90_sh_sign <- "Statistically significant results of glm conidering ICD10 codes, not-combined, chapters 1-17, as dependent variable from binary coded SH PRS (90th percentile - 1, other - 0), test sample of nonrelatives, cases"
+#save(icd_vs_90_sh_sign, readme_icd_vs_90_sh_sign, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/icd_ch1-17_vs_90_sh_test_nonr_cases_signif.RData")
+
 #or_icd_90_sh <- lapply(if_90_sh_vs_icd, function(x) exp(x[, 1]))
 #summary(unlist(or_icd_90_sh))
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
@@ -233,7 +240,7 @@ or_icd_90_90_i <- which(beta_icd_90_90 > log(2))
 # Test sample
 
 #pval_icd_90_bp_sh <- lapply(if_90_bp_sh_vs_icd, function(x) x[, 4])
-#pval_icd_90_bp_sh_i <- which(pval_icd_90_bp_sh < thr) # M171  M179  M199 M4782  M139 M1999
+#pval_icd_90_bp_sh_i <- which(pval_icd_90_bp_sh < thr) # 0
 #summary(unlist(pval_icd_90_bp_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
 #0.004072 0.284498 0.508252 0.521366 0.776025 0.990672
@@ -288,6 +295,10 @@ or_opcs_10_10_i <- which(beta_opcs_10_10 > log(2))
 #summary(unlist(pval_opcs_10_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
 #0.0000164 0.1272975 0.3662814 0.3917125 0.5751957 0.9749227
+
+#opcs_vs_10_sh_sign <- do.call(rbind.data.frame, if_10_sh_vs_opcs[pval_opcs_10_sh_i])
+#readme_opcs_vs_10_sh_sign <- "Statistically significant results of glm conidering OPCS4 codes, not-combined, chapters X, Y, Z excluded, as dependent variable from binary coded SH PRS (10th percentile - 1, other - 0), test sample of nonrelatives, cases"
+#save(opcs_vs_10_sh_sign, readme_opcs_vs_10_sh_sign, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_vs_10_sh_test_nonr_cases_signif.RData")
 
 #or_opcs_10_sh <- lapply(if_10_sh_vs_opcs, function(x) exp(x[, 1]))
 #summary(unlist(or_opcs_10_sh))
@@ -394,6 +405,10 @@ prs_90_10_opcs_i <- intersect(pval_opcs_90_10_i, or_opcs_90_10_i) # 1 element; E
 #summary(unlist(pval_opcs_90_sh))
 #    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
 #0.0000  0.1062  0.3175  0.3988  0.6731  0.9880
+
+#opcs_vs_90_sh_sign <- do.call(rbind.data.frame, if_90_sh_vs_opcs[pval_opcs_90_sh_i])
+#readme_opcs_vs_90_sh_sign <- "Statistically significant results of glm conidering OPCS4 codes, not-combined, chapters X, Y, Z excluded, as dependent variable from binary coded SH PRS (90th percentile - 1, other - 0), test sample of nonrelatives, cases"
+#save(opcs_vs_90_sh_sign, readme_opcs_vs_90_sh_sign, file = "/mnt/polyomica/projects/bp-sh/data/12_prs/opcs_no_xyz_vs_90_sh_test_nonr_cases_signif.RData")
 
 #or_opcs_90_sh <- lapply(if_90_sh_vs_opcs, function(x) exp(x[, 1]))
 #summary(unlist(or_opcs_90_sh))
