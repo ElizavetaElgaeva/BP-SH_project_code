@@ -136,3 +136,25 @@ heatmap.2(rg_m_cut, cellnote = rg_m_p, notecex = 4.0, notecol = "black", na.colo
 dev.off()
 
 save(traits, clusters, rg_m_cut, rg_p_cut, file = "heatmap_clusters_1.8.RData")
+
+# Prepare a table for supplements
+table(rownames(rg_m_cut) == rownames(rg_p_cut)) # true
+rg_tab <- rownames(rg_m_cut)
+rg_tab <- as.data.table(rg_tab)
+colnames(rg_tab) <- "Trait"
+rg_tab$Cluster <- get_Cluster(traits = rg_tab$Trait, hclust = h2, cluster_names = clusters)
+
+get_Cluster <- function(traits, hclust, cluster_names){
+	i <- match(traits, names(hclust))
+	i2 <- as.vector(hclust[i])
+	return(cluster_names[i2])
+}
+
+rg_m_cut <- as.data.frame(rg_m_cut)
+rg_p_cut <- as.data.frame(rg_p_cut)
+rg_tab$rg_SGIT <- rg_m_cut$SGIT
+rg_tab$rg_p_SGIT <- rg_p_cut$SGIT
+rg_tab$rg_CBP_UGIT <- rg_m_cut$"CBP UGIT"
+rg_tab$rg_p_CBP_UGIT <- rg_p_cut$"CBP UGIT"
+
+fwrite(rg_tab, file = "322_traits_rg_sgit_cbp_ugit.txt", dec = ".", sep = "\t")
