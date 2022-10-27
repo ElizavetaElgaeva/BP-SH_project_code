@@ -31,6 +31,9 @@ colnames(tab) <- c("CBP PRS", "SGIT PRS", "CBP UGIT PRS")
 
 # Load cluster data
 load("hclust_level_2_thr_1.25.RData")
+table(names(h2) == tab$description[-c(150:155)]) # all true
+tab$cluster <- c(as.vector(h2), c(NA,NA,NA,NA,NA,NA)) # NA for chronic pain traits
+fwrite(tab, "glm_results_level_2_preselected_codes_extended_desc_test_nonrelatives.txt", sep = "\t", dec = ".")
 
 # Select the most representative traits from clusters
 table(names(h2) %in% rownames(tab))
