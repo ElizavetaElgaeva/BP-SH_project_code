@@ -1,5 +1,8 @@
 This folder contains code for PRS analyses of chronic back pain (CBP), shared heredity (aka SGIT) and back pain adjusted for shared heredity (aka CBP UGIT).
 
+## prs_calculation
+This folder contains script for PRS calculation.
+
 ## 01a_filter_icd10.R
 This script performs validity checks of ICD-10 codes and filters the data to keep only individuals with back pain information and remove ICD-10 codes with low prevalence.
 
