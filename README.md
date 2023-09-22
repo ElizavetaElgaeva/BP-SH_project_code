@@ -44,4 +44,12 @@ This folder contains code adjusting CBP for all other original pain traits.
 
 ## 14_bp_adj_meta-analysis
 This folder contains code for meta-analysis of CBP adjusted for all other original pain traits.
- 
+
+## 15_gene_based
+This folder contains code for gene-based association analysis of SGIT and UGIT.
+
+## 16_ewas
+This folder contains code to obtain EWAS (exome-wide association analysis) data for 4 chronic pain traits and its SGIT.
+
+## 17_gene_based_exomes
+This folder contains code for gene-based association analysis of SGIT for 4 chronic pain traits (in EWAS data). 
