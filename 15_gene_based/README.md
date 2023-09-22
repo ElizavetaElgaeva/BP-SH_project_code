@@ -1,4 +1,4 @@
-This folder contains scripts for Gene-Based Analysis of two traits, SH and BP-SH.
+This folder contains scripts for Gene-Based Analysis of two traits, SGIT and UGIT.
 
 For this analysis, summary statistics from GWAS and the matrices of correlations between genotypes of all variants within a gene are used.
 
@@ -13,5 +13,5 @@ Three variant annotations ara analyzed: protein coding (cod), protein non-coding
 ## imp.comb_meth.R
 Aim of this script is to combine results from different methods.
 
-## run_sumFr.sh
+## run_imp_sumFr.sh
 This script runs three others.
