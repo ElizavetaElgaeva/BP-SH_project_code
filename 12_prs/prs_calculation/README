@@ -1,0 +1,28 @@
+This folder contains scripts for PRS models creation, validation and testing. It also includes code for calculation of PRSs. 
+
+# PRS models building for different traits by GCTB2.02 and GCTB2.03:
+    run_sbayesr_back.sh
+    run_sbayesr_bp_adj.sh
+    run_sbayesr_bp_sh.sh
+    run_sbayesr_sh.sh
+
+# Generation of files for further usage from GCTB output files:
+    genome_generate_back.sh
+    genome_generate_bp_adj.sh
+    genome_generate_bp_sh.sh
+    genome_generate_sh.sh
+
+# PRS calculation for different traits in UK Biobank data by chromosome:
+    run_prs_calc_back.sh
+    run_prs_calc_bp_adj.sh
+    run_prs_calc_bp_sh.sh
+    run_prs_calc_sh.sh
+
+# PRS calculation for whole genome:
+    create_prs.py
+
+# Statistics estimation for validation and testing stages:
+    accuracy_test.py
+    accuracy_validation.py
+    run_test.sh
+    run_validation.sh
